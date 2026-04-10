@@ -287,33 +287,60 @@ li {
   padding-top: 18px;
 }
 
-.game-row--portrait {
-  display: grid;
-  grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
-  gap: 28px 36px;
-  align-items: center;
-  padding: 24px 28px 28px;
-}
-
-.game-row--portrait .game-row-body {
-  padding: 0;
-}
-
-.game-row-visual {
+/* 蛋仔日语：文案在上，下方多竖屏并列（等宽手机框 + 窄屏可横滑） */
+.game-row--eggjp {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  gap: 26px;
+  padding: 24px 24px 28px;
 }
 
-.game-key-art {
+.game-row-body--eggjp-lead {
+  padding: 0;
+  max-width: 52rem;
+}
+
+.game-row-body--eggjp-lead .card-actions {
+  margin-top: 4px;
+}
+
+.eggjp-phone-row {
+  display: flex;
+  gap: clamp(12px, 2.2vw, 20px);
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 8px 6px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 12px;
+}
+
+.eggjp-phone {
+  flex: 0 0 auto;
+  width: clamp(150px, 17vw, 220px);
+  margin: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.eggjp-phone img {
+  display: block;
   width: 100%;
-  max-width: 268px;
+  height: auto;
   aspect-ratio: 9 / 16;
-  border-radius: 22px;
+  object-fit: cover;
+  border-radius: 20px;
   border: 1px solid var(--border);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  flex-shrink: 0;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+}
+
+.eggjp-phone-cap {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 .game-row-eyebrow {
@@ -342,12 +369,6 @@ li {
   background:
     linear-gradient(180deg, rgba(5, 10, 16, 0.35), rgba(5, 10, 16, 0.88)),
     url("../images/luoci-cover.jpg") center/cover no-repeat;
-}
-
-.cover-eggjp {
-  background:
-    linear-gradient(180deg, rgba(11, 15, 30, 0.35), rgba(11, 15, 30, 0.88)),
-    url("../images/eggjp-cover.png") no-repeat center top / cover;
 }
 
 .cover-future {
@@ -385,26 +406,6 @@ li {
   border: 1px solid var(--border);
   object-fit: cover;
   aspect-ratio: 16 / 9;
-  vertical-align: middle;
-}
-
-/* 竖屏截图：与主视觉同列、三列小竖图 */
-.game-screenshots--portrait {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin: 0;
-  width: 100%;
-  max-width: 268px;
-}
-
-.game-screenshots--portrait img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  object-fit: cover;
-  aspect-ratio: 9 / 16;
   vertical-align: middle;
 }
 
@@ -449,18 +450,12 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .game-row--portrait {
-    grid-template-columns: 1fr;
-    padding: 22px 20px 24px;
-    text-align: center;
+  .game-row--eggjp {
+    padding: 22px 18px 24px;
   }
 
-  .game-row--portrait .game-row-body {
-    text-align: left;
-  }
-
-  .game-row-visual {
-    margin-inline: auto;
+  .eggjp-phone {
+    width: clamp(148px, 42vw, 200px);
   }
 
   .hero,
