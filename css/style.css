@@ -266,8 +266,8 @@ li {
 
 .game-hero--future {
   aspect-ratio: 21 / 9;
-  min-height: 140px;
-  max-height: 200px;
+  min-height: 200px;
+  max-height: 280px;
 }
 
 .game-hero-titles {
@@ -277,6 +277,17 @@ li {
 
 .game-hero-titles h3 {
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.game-hero--future .game-hero-titles h3 {
+  font-size: clamp(2.35rem, 6.2vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.game-hero--future .cover-kicker {
+  margin-bottom: 10px;
 }
 
 .game-row-body {
@@ -319,7 +330,7 @@ li {
 
 .eggjp-phone {
   flex: 0 0 auto;
-  width: clamp(150px, 17vw, 220px);
+  width: clamp(118px, 11.5vw, 172px);
   margin: 0;
   scroll-snap-align: center;
   scroll-snap-stop: always;
