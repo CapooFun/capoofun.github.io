@@ -281,9 +281,15 @@ li {
 
 .future-split {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.2fr);
+  width: 100%;
+  /* 两列始终分栏；窄屏再堆叠（见 640px），避免预览窗 <920px 误切成单列 */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   align-items: stretch;
-  min-height: 220px;
+  min-height: 240px;
+}
+
+.future-split > * {
+  min-width: 0;
 }
 
 .future-split-media {
@@ -291,8 +297,9 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-start;
   padding: 28px 26px 26px;
-  min-height: 220px;
+  min-height: 240px;
   border-right: 1px solid var(--border);
 }
 
@@ -326,7 +333,12 @@ li {
   flex-direction: column;
   justify-content: center;
   gap: 0;
-  background: rgba(6, 12, 22, 0.55);
+  width: 100%;
+  background: rgba(10, 18, 32, 0.72);
+}
+
+.future-split-body .game-summary {
+  max-width: none;
 }
 
 .future-split-body .game-summary:last-of-type {
@@ -512,20 +524,6 @@ ul {
     width: clamp(148px, 42vw, 200px);
   }
 
-  .future-split {
-    grid-template-columns: 1fr;
-  }
-
-  .future-split-media {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    min-height: 200px;
-  }
-
-  .future-split-body {
-    padding: 22px 22px 26px;
-  }
-
   .hero,
   .subpage-header {
     padding-left: 18px;
@@ -550,6 +548,20 @@ ul {
 
   h1 {
     font-size: 2.4rem;
+  }
+
+  .future-split {
+    grid-template-columns: 1fr;
+  }
+
+  .future-split-media {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    min-height: 200px;
+  }
+
+  .future-split-body {
+    padding: 22px 22px 26px;
   }
 
   .info-card,
