@@ -1,0 +1,391 @@
+:root {
+  color-scheme: dark;
+  --bg: #071019;
+  --panel: rgba(14, 24, 39, 0.88);
+  --panel-strong: rgba(20, 31, 48, 0.96);
+  --border: rgba(160, 191, 255, 0.16);
+  --text: #f4f8ff;
+  --muted: #a7b3c9;
+  --accent: #7cc7ff;
+  --accent-strong: #55aaf0;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --radius: 24px;
+  --max-width: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(63, 94, 251, 0.16), transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(0, 225, 255, 0.14), transparent 18%),
+    linear-gradient(180deg, #061018 0%, #09131d 45%, #060d14 100%);
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.hero,
+.subpage-header {
+  background: linear-gradient(180deg, rgba(20, 30, 44, 0.9), rgba(9, 15, 25, 0.92));
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hero {
+  padding: 24px 24px 72px;
+  position: relative;
+}
+
+.hero::after,
+.subpage-header::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -30% auto;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91, 201, 255, 0.2), transparent 65%);
+  pointer-events: none;
+}
+
+.subpage-header {
+  padding: 24px;
+  position: relative;
+}
+
+.topbar,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand,
+.footer-brand {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.topbar-links,
+.footer-links,
+.hero-actions,
+.card-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.topbar a,
+.footer a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.topbar a:hover,
+.footer a:hover,
+.text-link:hover {
+  color: var(--text);
+}
+
+.hero-content,
+.subpage-copy {
+  max-width: 720px;
+  padding-top: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow,
+.section-label,
+.cover-kicker {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p,
+li {
+  line-height: 1.72;
+}
+
+.hero-lead,
+.subpage-copy p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-lead-cn,
+.game-summary-cn {
+  color: #d2dcf0;
+}
+
+.button,
+.text-link,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #04111a;
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.section {
+  padding: 72px 0 0;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.about-grid,
+.game-grid,
+.policy-layout,
+.support-layout {
+  display: grid;
+  gap: 20px;
+}
+
+.about-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.game-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.policy-layout,
+.support-layout {
+  grid-template-columns: 1fr;
+  padding-top: 32px;
+}
+
+.info-card,
+.game-card,
+.policy-card,
+.support-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.info-card,
+.policy-card,
+.support-card {
+  padding: 24px;
+}
+
+.cover {
+  min-height: 240px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.cover h3 {
+  font-size: 1.5rem;
+}
+
+.cover-tag,
+.status-pill {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cover-xiuxian {
+  background:
+    linear-gradient(180deg, rgba(5, 10, 16, 0.35), rgba(5, 10, 16, 0.88)),
+    url("../images/luoci-xiuxian-steam.png") center/cover no-repeat;
+}
+
+.cover-eggjp {
+  background:
+    linear-gradient(180deg, rgba(11, 15, 30, 0.4), rgba(11, 15, 30, 0.9)),
+    url("../images/eggjp-home.png") center/cover no-repeat;
+}
+
+.cover-future {
+  background:
+    linear-gradient(180deg, rgba(8, 12, 22, 0.22), rgba(8, 12, 22, 0.82)),
+    radial-gradient(circle at 18% 18%, rgba(124, 199, 255, 0.36), transparent 26%),
+    radial-gradient(circle at 82% 18%, rgba(101, 255, 218, 0.24), transparent 20%),
+    linear-gradient(135deg, #0b2740, #101822 60%, #152d34);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.game-summary {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.game-screenshots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.game-screenshots img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  vertical-align: middle;
+}
+
+.text-link {
+  padding-left: 0;
+  min-height: auto;
+  color: var(--accent);
+}
+
+.muted,
+.footer-meta {
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+ul {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 18px;
+}
+
+.faq-list p,
+.policy-card p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 920px) {
+  .about-grid,
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-screenshots {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .subpage-header {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-content,
+  .subpage-copy {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(calc(100% - 20px), var(--max-width));
+    padding-top: 10px;
+  }
+
+  .hero {
+    padding-bottom: 40px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .cover {
+    min-height: 210px;
+  }
+
+  .info-card,
+  .policy-card,
+  .support-card,
+  .card-body {
+    padding: 18px;
+  }
+}
