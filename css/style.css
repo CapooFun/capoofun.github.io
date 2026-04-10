@@ -264,12 +264,6 @@ li {
   min-height: 0;
 }
 
-.game-hero--future {
-  aspect-ratio: 21 / 9;
-  min-height: 200px;
-  max-height: 280px;
-}
-
 .game-hero-titles {
   position: relative;
   z-index: 1;
@@ -279,23 +273,72 @@ li {
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
 }
 
-.game-hero--future .game-hero-titles h3 {
-  font-size: clamp(2.35rem, 6.2vw, 3.75rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+/* Future：左右分栏，占满整卡宽度 */
+.game-row--future {
+  padding: 0;
+  overflow: hidden;
 }
 
-.game-hero--future .cover-kicker {
-  margin-bottom: 10px;
+.future-split {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.2fr);
+  align-items: stretch;
+  min-height: 220px;
+}
+
+.future-split-media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 26px 26px;
+  min-height: 220px;
+  border-right: 1px solid var(--border);
+}
+
+.future-split-media .cover-tag {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  align-self: auto;
+}
+
+.future-split-titles {
+  position: relative;
+  z-index: 1;
+}
+
+.future-split-media .cover-kicker {
+  margin: 0 0 10px;
+}
+
+.future-split-heading {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.8vw, 3.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+
+.future-split-body {
+  padding: 26px 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  background: rgba(6, 12, 22, 0.55);
+}
+
+.future-split-body .game-summary:last-of-type {
+  margin-bottom: 16px;
+}
+
+.future-split-body .card-actions {
+  margin-top: 4px;
 }
 
 .game-row-body {
   padding: 22px 24px 24px;
-}
-
-.game-row-body--compact {
-  padding-top: 18px;
 }
 
 /* 蛋仔日语：文案在上，下方多竖屏并列（等宽手机框 + 窄屏可横滑） */
@@ -467,6 +510,20 @@ ul {
 
   .eggjp-phone {
     width: clamp(148px, 42vw, 200px);
+  }
+
+  .future-split {
+    grid-template-columns: 1fr;
+  }
+
+  .future-split-media {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    min-height: 200px;
+  }
+
+  .future-split-body {
+    padding: 22px 22px 26px;
   }
 
   .hero,
