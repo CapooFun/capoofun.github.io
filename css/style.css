@@ -251,6 +251,26 @@ li {
   border-radius: var(--radius) var(--radius) 0 0;
 }
 
+/* 横屏作品：封面 16:9（如 PC / Steam） */
+.game-card--landscape .cover {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  align-items: flex-end;
+}
+
+/* 竖屏作品：封面 9:16（如手游竖版） */
+.game-card--portrait .cover {
+  min-height: 0;
+  aspect-ratio: 9 / 16;
+  max-height: min(520px, 72vh);
+  margin-inline: auto;
+  max-width: 280px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center top;
+}
+
 .cover h3 {
   font-size: 1.5rem;
 }
@@ -272,8 +292,8 @@ li {
 
 .cover-eggjp {
   background:
-    linear-gradient(180deg, rgba(11, 15, 30, 0.4), rgba(11, 15, 30, 0.9)),
-    url("../images/eggjp-home.png") center/cover no-repeat;
+    linear-gradient(180deg, rgba(11, 15, 30, 0.35), rgba(11, 15, 30, 0.88)),
+    url("../images/eggjp-cover.png") no-repeat center top / cover;
 }
 
 .cover-future {
@@ -294,19 +314,44 @@ li {
 }
 
 .game-screenshots {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
   margin: 0 0 16px;
 }
 
-.game-screenshots img {
+/* 横屏截图：三列 16:9 */
+.game-screenshots--landscape {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.game-screenshots--landscape img {
   width: 100%;
   height: auto;
   border-radius: 14px;
   border: 1px solid var(--border);
   object-fit: cover;
   aspect-ratio: 16 / 9;
+  vertical-align: middle;
+}
+
+/* 竖屏截图：居中窄列 9:16 */
+.game-screenshots--portrait {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.game-screenshots--portrait img {
+  width: min(30%, 200px);
+  min-width: 120px;
+  max-width: 220px;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  aspect-ratio: 9 / 16;
   vertical-align: middle;
 }
 
@@ -348,8 +393,18 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .game-screenshots {
+  .game-screenshots--landscape {
     grid-template-columns: 1fr;
+  }
+
+  .game-card--portrait .cover {
+    max-width: min(280px, 100%);
+    max-height: none;
+  }
+
+  .game-screenshots--portrait img {
+    width: min(100%, 200px);
+    min-width: 0;
   }
 
   .hero,
