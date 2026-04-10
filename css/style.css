@@ -203,7 +203,6 @@ li {
 }
 
 .about-grid,
-.game-grid,
 .policy-layout,
 .support-layout {
   display: grid;
@@ -214,8 +213,11 @@ li {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.game-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* 产品列表：每款独占一行，避免横竖屏混排时三列错位（常见 Press Kit / 产品页结构） */
+.game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .policy-layout,
@@ -225,7 +227,6 @@ li {
 }
 
 .info-card,
-.game-card,
 .policy-card,
 .support-card {
   background: var(--panel);
@@ -234,45 +235,98 @@ li {
   box-shadow: var(--shadow);
 }
 
+.game-row {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
 .info-card,
 .policy-card,
 .support-card {
   padding: 24px;
 }
 
-.cover {
-  min-height: 240px;
-  padding: 20px;
+.game-hero {
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
+  padding: 20px;
   border-bottom: 1px solid var(--border);
-  border-radius: var(--radius) var(--radius) 0 0;
 }
 
-/* 横屏作品：封面 16:9（如 PC / Steam） */
-.game-card--landscape .cover {
-  min-height: 0;
+.game-hero--landscape {
   aspect-ratio: 16 / 9;
-  align-items: flex-end;
-}
-
-/* 竖屏作品：封面 9:16（如手游竖版） */
-.game-card--portrait .cover {
   min-height: 0;
-  aspect-ratio: 9 / 16;
-  max-height: min(520px, 72vh);
-  margin-inline: auto;
-  max-width: 280px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: center top;
 }
 
-.cover h3 {
-  font-size: 1.5rem;
+.game-hero--future {
+  aspect-ratio: 21 / 9;
+  min-height: 140px;
+  max-height: 200px;
+}
+
+.game-hero-titles {
+  position: relative;
+  z-index: 1;
+}
+
+.game-hero-titles h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.game-row-body {
+  padding: 22px 24px 24px;
+}
+
+.game-row-body--compact {
+  padding-top: 18px;
+}
+
+.game-row--portrait {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
+  gap: 28px 36px;
+  align-items: center;
+  padding: 24px 28px 28px;
+}
+
+.game-row--portrait .game-row-body {
+  padding: 0;
+}
+
+.game-row-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.game-key-art {
+  width: 100%;
+  max-width: 268px;
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.game-row-eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.game-row-title {
+  margin: 0 0 14px;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
 }
 
 .cover-tag,
@@ -334,21 +388,20 @@ li {
   vertical-align: middle;
 }
 
-/* 竖屏截图：居中窄列 9:16 */
+/* 竖屏截图：与主视觉同列、三列小竖图 */
 .game-screenshots--portrait {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  width: 100%;
+  max-width: 268px;
 }
 
 .game-screenshots--portrait img {
-  width: min(30%, 200px);
-  min-width: 120px;
-  max-width: 220px;
+  width: 100%;
   height: auto;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid var(--border);
   object-fit: cover;
   aspect-ratio: 9 / 16;
@@ -388,8 +441,7 @@ ul {
 }
 
 @media (max-width: 920px) {
-  .about-grid,
-  .game-grid {
+  .about-grid {
     grid-template-columns: 1fr;
   }
 
@@ -397,14 +449,18 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .game-card--portrait .cover {
-    max-width: min(280px, 100%);
-    max-height: none;
+  .game-row--portrait {
+    grid-template-columns: 1fr;
+    padding: 22px 20px 24px;
+    text-align: center;
   }
 
-  .game-screenshots--portrait img {
-    width: min(100%, 200px);
-    min-width: 0;
+  .game-row--portrait .game-row-body {
+    text-align: left;
+  }
+
+  .game-row-visual {
+    margin-inline: auto;
   }
 
   .hero,
@@ -431,10 +487,6 @@ ul {
 
   h1 {
     font-size: 2.4rem;
-  }
-
-  .cover {
-    min-height: 210px;
   }
 
   .info-card,

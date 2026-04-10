@@ -68,16 +68,17 @@
           <h2>Current and upcoming titles</h2>
         </div>
 
-        <div class="game-grid">
-          <article class="game-card game-card--landscape">
-            <div class="cover cover-xiuxian">
+        <div class="game-list">
+          <!-- 横屏作品：全宽主视觉 + 下方文案（常见 PC / Steam 官网排法） -->
+          <article class="game-row game-row--landscape">
+            <div class="game-hero game-hero--landscape cover-xiuxian">
               <span class="cover-tag">Steam</span>
-              <div>
+              <div class="game-hero-titles">
                 <p class="cover-kicker">Featured Game</p>
                 <h3>裸辞修仙传</h3>
               </div>
             </div>
-            <div class="card-body">
+            <div class="game-row-body">
               <p class="game-summary">
                 A roguelite cultivation RPG centered on exploration, looting, base growth, and
                 strategic combat.
@@ -103,15 +104,19 @@
             </div>
           </article>
 
-          <article class="game-card game-card--portrait">
-            <div class="cover cover-eggjp">
-              <span class="cover-tag">Learning Game</span>
-              <div>
-                <p class="cover-kicker">In Development</p>
-                <h3>蛋仔日语</h3>
-              </div>
+          <!-- 竖屏作品：左侧主视觉 + 右侧文案与截图（避免与横屏作品挤在同一行等高） -->
+          <article class="game-row game-row--portrait">
+            <div class="game-row-visual">
+              <div class="game-key-art cover-eggjp" aria-hidden="true"></div>
+              <p class="game-screenshots game-screenshots--portrait" aria-label="蛋仔日语界面预览（竖屏）">
+                <img src="images/eggjp-maze.png" alt="蛋仔日语：迷宫小游戏界面" width="180" height="320" loading="lazy" decoding="async">
+                <img src="images/eggjp-vocabulary.png" alt="蛋仔日语：单词本界面" width="180" height="320" loading="lazy" decoding="async">
+                <img src="images/eggjp-typing.png" alt="蛋仔日语：打字练习界面" width="180" height="320" loading="lazy" decoding="async">
+              </p>
             </div>
-            <div class="card-body">
+            <div class="game-row-body">
+              <p class="game-row-eyebrow">Learning Game · In Development</p>
+              <h3 class="game-row-title">蛋仔日语</h3>
               <p class="game-summary">
                 A playful Japanese learning project built around mini-games, useful vocabulary,
                 and lightweight practice loops.
@@ -119,26 +124,21 @@
               <p class="game-summary game-summary-cn">
                 一个围绕小游戏、实用词汇和轻量练习循环打造的趣味日语学习项目。
               </p>
-              <p class="game-screenshots game-screenshots--portrait" aria-label="蛋仔日语界面预览（竖屏）">
-                <img src="images/eggjp-maze.png" alt="蛋仔日语：迷宫小游戏界面" width="180" height="320" loading="lazy" decoding="async">
-                <img src="images/eggjp-vocabulary.png" alt="蛋仔日语：单词本界面" width="180" height="320" loading="lazy" decoding="async">
-                <img src="images/eggjp-typing.png" alt="蛋仔日语：打字练习界面" width="180" height="320" loading="lazy" decoding="async">
-              </p>
               <div class="card-actions">
                 <span class="status-pill">More details coming soon</span>
               </div>
             </div>
           </article>
 
-          <article class="game-card">
-            <div class="cover cover-future">
+          <article class="game-row game-row--future">
+            <div class="game-hero game-hero--future cover-future">
               <span class="cover-tag">Future</span>
-              <div>
+              <div class="game-hero-titles">
                 <p class="cover-kicker">Roadmap</p>
                 <h3>More Titles</h3>
               </div>
             </div>
-            <div class="card-body">
+            <div class="game-row-body game-row-body--compact">
               <p class="game-summary">
                 More original games and interactive projects are planned under the Infans Games
                 label.
